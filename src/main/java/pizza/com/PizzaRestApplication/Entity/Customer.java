@@ -4,13 +4,12 @@ package pizza.com.PizzaRestApplication.Entity;
 import jakarta.persistence.*;
 import pizza.com.PizzaRestApplication.RequiredMethods.BaseEntityInterface;
 
-@Entity(name = "customers" )
-public class Customers implements BaseEntityInterface {
+@Entity(name = "customer" )
+public class Customer implements BaseEntityInterface {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", nullable = false)
     private Long id;
-
     private String name;
     private String email;
     private String phone;
@@ -60,7 +59,7 @@ public class Customers implements BaseEntityInterface {
 
     @Override
     public String toString() {
-        return "Customers{" +
+        return "Customer{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +

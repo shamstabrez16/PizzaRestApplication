@@ -4,12 +4,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pizza.com.PizzaRestApplication.Entity.Promotions;
-import pizza.com.PizzaRestApplication.Entity.Time_slots;
+import pizza.com.PizzaRestApplication.DTO.PromotionDTO;
+import pizza.com.PizzaRestApplication.Entity.Promotion;
+import pizza.com.PizzaRestApplication.Entity.Time_slot;
 import pizza.com.PizzaRestApplication.Repository.PromotionsRepository;
 import pizza.com.PizzaRestApplication.Repository.Time_slotsRepository;
+import pizza.com.PizzaRestApplication.Utility.ValueMapper;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/promotions")
@@ -17,15 +20,8 @@ public class PromotionsController {
     @Autowired
     private PromotionsRepository repository;
     @GetMapping("/all")
-    List<Promotions> all() {
-        List<Promotions> promotions = repository.findAll();
-        return promotions;
-    }
-    @Autowired
-    private Time_slotsRepository trepository;
-    @GetMapping("/alll")
-    List<Time_slots> alll() {
-        List<Time_slots> time_slots = trepository.findAll();
-        return time_slots;
+    List<PromotionDTO> all() {
+        List<Promotion> promotions = repository.findAll();
+        return promotions.stream().map(ValueMapper::mapPPromotionToPromotionDTO).collect(Collectors.toList());
     }
 }

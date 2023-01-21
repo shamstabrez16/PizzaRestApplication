@@ -1,14 +1,8 @@
-package pizza.com.PizzaRestApplication.Entity;
-
-import jakarta.persistence.*;
+package pizza.com.PizzaRestApplication.DTO;
 
 import java.util.Date;
 
-@Entity(name = "promotions")
-public class Promotions {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+public class PromotionDTO {
     private Long id;
 
     private String name;
@@ -25,20 +19,6 @@ public class Promotions {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    @Override
-    public String toString() {
-        return "Promotions{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", type='" + type + '\'' +
-                ", start_date=" + start_date +
-                ", end_date=" + end_date +
-                ", description='" + description + '\'' +
-                ", applicable_products='" + applicable_products + '\'' +
-                ", discount_percent=" + discount_percent +
-                '}';
     }
 
     public String getName() {

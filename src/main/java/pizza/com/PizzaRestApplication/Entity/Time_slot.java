@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 
 import java.util.Date;
 
-@Entity(name = "time_slots")
-public class Time_slots {
+@Entity(name = "time_slot")
+public class Time_slot {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -26,7 +26,7 @@ public class Time_slots {
 
     @Override
     public String toString() {
-        return "Time_slots{" +
+        return "Time_slot{" +
                 "id=" + id +
                 ", slot_type='" + slot_type + '\'' +
                 ", start_time=" + start_time +

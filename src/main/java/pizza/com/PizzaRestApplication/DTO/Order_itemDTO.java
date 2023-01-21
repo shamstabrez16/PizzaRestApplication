@@ -1,13 +1,8 @@
-package pizza.com.PizzaRestApplication.Entity;
+package pizza.com.PizzaRestApplication.DTO;
 
-import jakarta.persistence.*;
 import pizza.com.PizzaRestApplication.RequiredMethods.BaseEntityInterface;
 
-@Entity(name = "order_items")
-public class Order_items implements BaseEntityInterface {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+public class Order_itemDTO implements BaseEntityInterface {
     private Long id;
     private int order_id ;
     private int pizza_id;
@@ -55,14 +50,5 @@ public class Order_items implements BaseEntityInterface {
         this.price = price;
     }
 
-    @Override
-    public String toString() {
-        return "Order_items{" +
-                "id=" + id +
-                ", order_id=" + order_id +
-                ", pizza_id=" + pizza_id +
-                ", quantity=" + quantity +
-                ", price=" + price +
-                '}';
-    }
+
 }

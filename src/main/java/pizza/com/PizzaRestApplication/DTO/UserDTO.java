@@ -1,18 +1,12 @@
-package pizza.com.PizzaRestApplication.Entity;
+package pizza.com.PizzaRestApplication.DTO;
 
-import jakarta.persistence.*;
 import pizza.com.PizzaRestApplication.RequiredMethods.BaseEntityInterface;
-import pizza.com.PizzaRestApplication.Utility.Helper;
 
 import java.util.Date;
 
-@Entity(name = "users")
-public class Users implements BaseEntityInterface {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
 
+public class UserDTO implements BaseEntityInterface {
+    private Long id;
     private String email;
     private String password;
     private Date created_at;
@@ -21,10 +15,6 @@ public class Users implements BaseEntityInterface {
     public Long getId() {
         return id;
     }
-
-//    public void setId(Long id) {
-//        this.id = id;
-   // }
 
     public String getEmail() {
         return email;
@@ -48,18 +38,6 @@ public class Users implements BaseEntityInterface {
 
     public void setCreated_at(Date created_at) {
         this.created_at = created_at;
-    }
-
-
-
-    @Override
-    public String toString() {
-        return "Users{" +
-                "id=" + id +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", created_at=" + created_at +
-                '}';
     }
 
     public String getSalt() {

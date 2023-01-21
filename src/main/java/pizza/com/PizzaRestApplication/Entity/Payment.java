@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 
 import java.util.Date;
 
-@Entity(name = "payments")
-public class Payments {
+@Entity(name = "payment")
+public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -67,7 +67,7 @@ public class Payments {
 
     @Override
     public String toString() {
-        return "Payments{" +
+        return "Payment{" +
                 "id=" + id +
                 ", order_id=" + order_id +
                 ", amount=" + amount +

@@ -7,10 +7,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import pizza.com.PizzaRestApplication.Business.UserBusiness;
 import pizza.com.PizzaRestApplication.BcryptSecurity.BcryptHashing;
-import pizza.com.PizzaRestApplication.Entity.Users;
+import pizza.com.PizzaRestApplication.DTO.UserDTO;
+import pizza.com.PizzaRestApplication.Entity.User;
 import pizza.com.PizzaRestApplication.Repository.UsersRepository;
+import pizza.com.PizzaRestApplication.Utility.ValueMapper;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/user")
@@ -20,45 +23,43 @@ public class UsersController {
     private UsersRepository repository;
 
     @GetMapping("/all")
-    List<Users> all() {
-        List<Users> orders = repository.findAll();
-        for (Users user :orders) {
-            System.out.println(user.toString());
-        }
-        return orders;
+    List<UserDTO> all() {
+        List<User> orders = repository.findAll();
+       return orders.stream().map(ValueMapper::mapUserToUserDTO).collect(Collectors.toList());
     }
 
     @PostMapping("/new")
-    Users newUser(@Param("email") String email, @Param("password") String password){
+    UserDTO newUser(@Param("email") String email, @Param("password") String password){
         UserBusiness userBusiness = new UserBusiness();
-        Users user = userBusiness.buildNewUser(email, password);
-        return repository.save(user);
+        User user = userBusiness.buildNewUser(email, password);
+        user= repository.save(user);
+        return  ValueMapper.mapUserToUserDTO(user);
     }
     @GetMapping ("/validate")
     boolean validate(@Param("email") String email, @Param("password") String password){
-       Users users = repository.getUserByEmail(email);
-      return BcryptHashing.deCoding(password,users.getSalt(), users.getPassword());
+       User user = repository.getUserByEmail(email);
+      return BcryptHashing.deCoding(password, user.getSalt(), user.getPassword());
     }
     @DeleteMapping ("/delete")
     ResponseEntity delete(@Param("email") String email, @Param("password") String password){
-        Users users = repository.getUserByEmail(email);
-         if(BcryptHashing.deCoding(password,users.getSalt(), users.getPassword()))
+        User user = repository.getUserByEmail(email);
+         if(BcryptHashing.deCoding(password, user.getSalt(), user.getPassword()))
         {
-            repository.deleteById(users.getId());
-            return new ResponseEntity("Deleted user : "+ users.getEmail(), HttpStatus.OK);
+            repository.deleteById(user.getId());
+            return new ResponseEntity("Deleted user : "+ user.getEmail(), HttpStatus.OK);
         }
         else{
-            return new ResponseEntity("Couldn't Delete user, Please check user Id and password : "+ users.getEmail(), HttpStatus.NOT_FOUND);
+            return new ResponseEntity("Couldn't Delete user, Please check user Id and password : "+ user.getEmail(), HttpStatus.NOT_FOUND);
         }
 
     }
 
     @PutMapping("/update")
     int changePassword(@Param("email") String email, @Param("password") String password,@Param("newpassword") String newpassword){
-        Users users = repository.getUserByEmail(email);
-        if(users!= null && BcryptHashing.deCoding(password,users.getSalt(), users.getPassword())) {
+        User user = repository.getUserByEmail(email);
+        if(user != null && BcryptHashing.deCoding(password, user.getSalt(), user.getPassword())) {
 
-           return repository.changePassword(BcryptHashing.enCoding(newpassword,users.getSalt()),email);
+           return repository.changePassword(BcryptHashing.enCoding(newpassword, user.getSalt()),email);
         }
         else {
             return new ResponseEntity("Incorrect username or password",HttpStatus.FORBIDDEN).getStatusCodeValue();

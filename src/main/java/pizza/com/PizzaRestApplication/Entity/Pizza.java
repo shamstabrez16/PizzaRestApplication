@@ -2,8 +2,8 @@ package pizza.com.PizzaRestApplication.Entity;
 
 import jakarta.persistence.*;
 
-@Entity(name = "pizzas")
-public class Pizzas {
+@Entity(name = "pizza")
+public class Pizza {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -46,7 +46,7 @@ public class Pizzas {
 
     @Override
     public String toString() {
-        return "Pizzas{" +
+        return "Pizza{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", toppings='" + toppings + '\'' +

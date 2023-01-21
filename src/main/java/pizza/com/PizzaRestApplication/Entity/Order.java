@@ -4,11 +4,9 @@ import jakarta.persistence.*;
 import pizza.com.PizzaRestApplication.RequiredMethods.BaseEntityInterface;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity(name = "orders")
-public class Orders implements BaseEntityInterface {
+public class Order implements BaseEntityInterface {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id", nullable = false)
@@ -53,7 +51,7 @@ public class Orders implements BaseEntityInterface {
 
     @Override
     public String toString() {
-        return "Orders{" +
+        return "Order{" +
                 "order_id=" + order_id +
                 ", customer_id=" + customerId +
                 ", order_total=" + order_total +

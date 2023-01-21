@@ -1,4 +1,4 @@
-package pizza.com.PizzaRestApplication.Entity;
+package pizza.com.PizzaRestApplication.Utility;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
