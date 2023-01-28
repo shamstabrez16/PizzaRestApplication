@@ -5,12 +5,12 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.lang.NonNull;
 import org.springframework.transaction.annotation.Transactional;
-import pizza.com.PizzaRestApplication.Entity.User;
+import pizza.com.PizzaRestApplication.Entity.Users;
 
-public interface UsersRepository extends JpaRepository<User, Long> {
+public interface UsersRepository extends JpaRepository<Users, Long> {
     @Transactional
     @Modifying
-    @Query("update user u set u.password = ?1 where u.email like ?2")
+    @Query("update users u set u.password = ?1 where u.email like ?2")
     int changePassword(@NonNull String password, @NonNull String email);
-    User getUserByEmail(String email);
+    Users getUserByEmail(String email);
 }

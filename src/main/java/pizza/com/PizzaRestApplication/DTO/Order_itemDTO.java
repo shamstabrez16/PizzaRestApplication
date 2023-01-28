@@ -1,7 +1,5 @@
 package pizza.com.PizzaRestApplication.DTO;
-
 import pizza.com.PizzaRestApplication.RequiredMethods.BaseEntityInterface;
-
 public class Order_itemDTO implements BaseEntityInterface {
     private Long id;
     private int order_id ;

@@ -5,8 +5,8 @@ import pizza.com.PizzaRestApplication.RequiredMethods.BaseEntityInterface;
 
 import java.util.Date;
 
-@Entity(name = "user")
-public class User implements BaseEntityInterface {
+@Entity(name = "users")
+public class Users implements BaseEntityInterface {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)

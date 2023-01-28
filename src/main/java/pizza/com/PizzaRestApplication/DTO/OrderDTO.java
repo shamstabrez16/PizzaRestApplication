@@ -3,7 +3,6 @@ package pizza.com.PizzaRestApplication.DTO;
 import pizza.com.PizzaRestApplication.RequiredMethods.BaseEntityInterface;
 
 import java.util.Date;
-
 public class OrderDTO implements BaseEntityInterface {
     private int order_id;
     private int customerId;

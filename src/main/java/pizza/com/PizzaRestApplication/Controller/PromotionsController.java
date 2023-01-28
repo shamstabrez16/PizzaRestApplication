@@ -6,9 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pizza.com.PizzaRestApplication.DTO.PromotionDTO;
 import pizza.com.PizzaRestApplication.Entity.Promotion;
-import pizza.com.PizzaRestApplication.Entity.Time_slot;
 import pizza.com.PizzaRestApplication.Repository.PromotionsRepository;
-import pizza.com.PizzaRestApplication.Repository.Time_slotsRepository;
 import pizza.com.PizzaRestApplication.Utility.ValueMapper;
 
 import java.util.List;

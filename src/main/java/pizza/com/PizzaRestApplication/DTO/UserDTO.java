@@ -16,6 +16,7 @@ public class UserDTO implements BaseEntityInterface {
         return id;
     }
 
+
     public String getEmail() {
         return email;
     }
@@ -46,5 +47,9 @@ public class UserDTO implements BaseEntityInterface {
 
     public void setSalt(String salt) {
         this.salt = salt;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

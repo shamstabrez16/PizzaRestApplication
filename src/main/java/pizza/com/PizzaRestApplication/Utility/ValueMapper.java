@@ -98,12 +98,13 @@ public class ValueMapper {
         return promotionDTO;
     }
 
-    public static UserDTO mapUserToUserDTO(User user){
+    public static UserDTO mapUserToUserDTO(Users users){
         UserDTO userDTO = new UserDTO();
-        userDTO.setEmail(user.getEmail());
-        userDTO.setPassword(user.getPassword());
-        userDTO.setCreated_at(user.getCreated_at());
-        userDTO.setSalt(user.getSalt());
+        userDTO.setId(users.getId());
+        userDTO.setEmail(users.getEmail());
+        userDTO.setPassword(users.getPassword());
+        userDTO.setCreated_at(users.getCreated_at());
+        userDTO.setSalt(users.getSalt());
         return userDTO;
     }
 }

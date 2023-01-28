@@ -1,7 +1,5 @@
 package pizza.com.PizzaRestApplication.DTO;
 
-
-
 public class CustomerDTO {
     private Long id;
     private String name;
